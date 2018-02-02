@@ -26,6 +26,7 @@ note: You need to be running Node 8.9.4
 # About the Project
 
 The webapp, takes gps coordinates from GM's ngi vehicle api and then uses these coordinates with :
+
 	- The google maps api to find mosque within a set distance.
 	- The [prayerTimes api](http://praytimes.org) to get prayer times.
 

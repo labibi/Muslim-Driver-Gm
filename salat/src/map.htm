@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello World</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <!-- Base css, but you'll likely want to keep them -->
+
+  <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.min.css" type="text/css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.min.css" type="text/css">
+  <link rel="stylesheet" href="css/reset.css" type="text/css">
+  <!-- Your custom files -->
+  <link rel="stylesheet" href="css/app.css" type="text/css">
+
+  <script src="js/ngi.polyfill.min.js"></script>
+  <script src="GMLIB/system.js"></script>
+  <script src="GMLIB/info.js"></script>
+  <script type="text/javascript" src="js/PrayTimes.js"></script>
+  <script type="text/javascript" src="js/jquery.js"></script>
+
+  <!-- Uncomment libraries as you need them: -->
+  <!-- <script src="GMLIB/comm.js"></script> -->
+  <!-- <script src="GMLIB/io.js"></script> -->
+  <!-- <script src="GMLIB/media.js"></script> -->
+  <!-- <script src="GMLIB/nav.js"></script> -->
+  <!-- <script src="GMLIB/phone.js"></script> -->
+  <!-- <script src="GMLIB/ui.js"></script> -->
+  <!-- <script src="GMLIB/voice.js"></script> -->
+  <style type="text/css">
+  .header{
+    vertical-align: text-top;
+          /*background-color: #007330;
+          text-decoration: */
+        }
+        .thd{
+          text-align: right;
+        }
+        #return{
+          width: 100%;
+        }
+
+        #header_{
+          padding: 10px;
+          margin-bottom: 20px;
+          margin-right: 0;
+        }
+        #map {
+          height: 100%;
+          width: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html{
+          height: 100%;
+          margin: 0;
+        }
+        body{
+          height: 80%;
+          margin: 0;
+        }
+        #wrapper, #main {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+      </style>
+      <script type="text/javascript">
+
+        var myLatlng;
+        var map;
+        var infowindow;
+        var latitude;
+        var longtitude;
+        var marker;
+
+        function loadMap()
+        {
+          myLatlng = new google.maps.LatLng(0,0);
+
+          var mapOptions = {
+            zoom: 15,
+            center: myLatlng
+          };
+
+          map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+          infowindow = new google.maps.InfoWindow();
+          var img="images/car-marker-64px.png"
+          marker = new google.maps.Marker({
+            position: myLatlng,
+            icon: img,
+            map: map,
+            animation: google.maps.Animation.DROP
+          });
+        }
+        function updatePosition(position) {
+          latitude = position.coords.latitude;
+          longitude = position.coords.longitude;
+          var location_ = {lat: latitude, lng: longitude};
+          myLatlng = new google.maps.LatLng(latitude, longitude);
+          map.setCenter(myLatlng);
+          marker.setPosition(myLatlng);
+
+          var service = new google.maps.places.PlacesService(map);
+          service.nearbySearch({
+            location: location_,
+            radius: 1000,
+            type: ['mosque']
+          }, callback);
+        }
+
+        function callback(results, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+              createMarker(results[i]);
+            }
+          }
+        }
+
+        function createMarker(place) {
+          var placeLoc = place.geometry.location;
+          var img="images/mosque-marker-64px.png"
+          var marker = new google.maps.Marker({
+            map: map,
+            icon:img,
+            position: place.geometry.location,
+            animation: google.maps.Animation.DROP
+          });
+
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(place.name);
+            infowindow.open(map, this);
+          });
+        }
+      </script>
+
+      <!-- Your app code: -->
+      <script src="js/app.js"></script>
+      <script type="text/javascript">
+        gm.info.getCurrentPosition(updatePosition, true)
+        gm.info.watchPosition(updatePosition, true)
+      </script>
+    </head>
+    <body>
+      <div id="wrapper">
+        <div id="main">
+          <div id="header_" class="row bg-info text-white">
+            <div class="col"><a href="index.html"><img id="return" src="images/arrow.png"></a></div>
+            <div class="col-11"><h4>Near Masjid</h4></div>
+          </div>
+          <div id="map"></div>
+        </div>
+      </div>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCamf7O6w1JE09lGbeTJQZ1KA4EyVErxOE&libraries=places&callback=loadMap">
+    </script>
+    <script type="text/javascript">
+      setInterval(checkNextSalat, 1000);
+    </script>
+  </body>
+  </html>

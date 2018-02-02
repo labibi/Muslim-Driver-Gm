@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello World</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <!-- Base css, but you'll likely want to keep them -->
+
+  <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.min.css" type="text/css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.min.css" type="text/css">
+  <link rel="stylesheet" href="css/reset.css" type="text/css">
+  <!-- Your custom files -->
+  <link rel="stylesheet" href="css/app.css" type="text/css">
+
+  <script src="js/ngi.polyfill.min.js"></script>
+  <script src="GMLIB/system.js"></script>
+  <script src="GMLIB/info.js"></script>
+  <script type="text/javascript" src="js/PrayTimes.js"></script>
+  <script type="text/javascript" src="js/jquery.js"></script>
+
+  <!-- Uncomment libraries as you need them: -->
+  <!-- <script src="GMLIB/comm.js"></script> -->
+  <!-- <script src="GMLIB/io.js"></script> -->
+  <!-- <script src="GMLIB/media.js"></script> -->
+  <!-- <script src="GMLIB/nav.js"></script> -->
+  <!-- <script src="GMLIB/phone.js"></script> -->
+  <!-- <script src="GMLIB/ui.js"></script> -->
+  <!-- <script src="GMLIB/voice.js"></script> -->
+  <style type="text/css">
+  .header{
+    vertical-align: text-top;
+          /*background-color: #007330;
+          text-decoration: */
+        }
+        .thd{
+          text-align: right;
+        }
+        #return{
+          width: 100%;
+        }
+        #header_{
+          padding: 10px;
+          margin-bottom: 20px;
+          margin-right: 0;
+        }
+      </style>
+
+    </head>
+    <body>
+      <div id="wrapper">
+        <div id="main">
+          <div id="header_" class="row bg-info text-white">
+            <div class="col"><a href="index.html"><img id="return" src="images/arrow.png"></a></div>
+            <div class="col-11"><h4>Salawat Times</h4></div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div align="center" id="table"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Your app code: -->
+        <script src="js/app.js"></script>
+        <script type="text/javascript">
+          gm.info.getCurrentPosition(setSalawat, true)
+          gm.info.watchPosition(setSalawat, true)
+          setInterval(checkNextSalat, 1000);
+        </script>
+
+      </body>
+      </html>

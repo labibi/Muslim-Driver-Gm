@@ -1,0 +1,14 @@
+{
+  "name":"salat",
+  "id":"96913632",
+  "template": "Blank",
+  "version": "0.0.0",
+  "src": "src",
+  "dist": "dist",
+  "main": "index.html",
+  "icon": "Icon.png",
+  "developer": "ayoub",
+  "category": "General",
+  "type": "RemoteHigh",
+  "description": "Generated on 2018-1-26 23:32:45 by ngi-sdk version "
+}

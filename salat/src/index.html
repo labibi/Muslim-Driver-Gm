@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello World</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <!-- Base css, but you'll likely want to keep them -->
+
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.min.css" type="text/css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.min.css" type="text/css">
+  <!-- Your custom files -->
+  <link rel="stylesheet" href="css/app.css" type="text/css">
+  <link rel="stylesheet" href="css/reset.css" type="text/css">
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/PrayTimes.js"></script>
+
+  <script src="js/ngi.polyfill.min.js"></script>
+  <script src="GMLIB/system.js"></script>
+  <script src="GMLIB/info.js"></script>
+
+
+  <!-- Uncomment libraries as you need them: -->
+  <!-- <script src="GMLIB/comm.js"></script> -->
+  <!-- <script src="GMLIB/io.js"></script> -->
+  <!-- <script src="GMLIB/media.js"></script> -->
+  <!-- <script src="GMLIB/nav.js"></script> -->
+  <!-- <script src="GMLIB/phone.js"></script> -->
+  <!-- <script src="GMLIB/ui.js"></script> -->
+  <!-- <script src="GMLIB/voice.js"></script> -->
+  <style type="text/css">
+  #header_{
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
+</style>
+</head>
+<body>
+
+  <div id="wrapper">
+    <div id="close"><img src="images/close.png" onclick="gm.system.closeApp()" alt="close"></div>
+    <div id="main">
+      <div id="header_" class="row bg-info text-white">
+        <div class="col-6">
+          <h5 style="margin-left: 58px;">Next Salat</h5>
+        </div>
+        <div class="col">
+          <h4 id="nextSalat_time"></h4>
+          <h6 id="nextSalat_name"></h6>
+        </div>
+      </div>
+      <div class="container" >
+        <div class="row">
+          <div class="col"><!--time-->
+            <a href="time.html"><img src="images/time_icon_.png" width="100%"></a>
+          </div>
+
+          <div class="col"><!--jame3-->
+            <a href="map.htm"><img src="images/location_icon_.png" width="100%"></a>
+          </div>
+          <div class="col"><!--bousala-->
+            <a href="quran.html"><img src="images/quran.png" width="100%"></a>
+          </div>
+        </div>
+      </div> 
+
+    </div>
+  </div>
+</div>
+
+<!-- Your app code: -->
+<script src="js/app.js"></script>
+<script type="text/javascript">
+    //update nextSalat by position
+    gm.info.getCurrentPosition(updateNextSalat, true)
+    gm.info.watchPosition(updateNextSalat, true)
+    //update nextSalat every minute
+    setInterval(checkNextSalat, 1000);
+
+    function setNextSalat()
+    {
+      document.getElementById("nextSalat_name").innerHTML = localStorage.getItem("nextSalat_name");
+      document.getElementById("nextSalat_time").innerHTML = localStorage.getItem("nextSalat_time");
+    }
+  </script>
+  
+
+</body>
+</html>

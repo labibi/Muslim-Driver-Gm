@@ -39,9 +39,7 @@ The webapp, takes gps coordinates from GM's ngi vehicle api and then uses these 
 ![quran](./quran.png)
 
 # About us
-Team : LABIBI Ayoub, KNARI Anas, CHOUAI Salim.
-
-Master Big Data Analytics & Smart Systems.
-
-Faculty of science Dhar Mahraz - Fez/Morocco.
+	Team : LABIBI Ayoub, KNARI Anas, CHOUAI Salim.
+	Master Big Data Analytics & Smart Systems.
+	Faculty of science Dhar Mahraz - Fez/Morocco.
 

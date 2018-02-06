@@ -37,3 +37,9 @@ The webapp, takes gps coordinates from GM's ngi vehicle api and then uses these 
 ![prayertimes](./prayer_times.png)
 ![map](./map.png)
 ![quran](./quran.png)
+
+# About us
+Team : LABIBI Ayoub, KNARI Anas, CHOUAI Salim.
+Master Big Data Analytics & Smart Systems.
+Faculty of science Dhar Mahraz - Fez/Morocco.
+
